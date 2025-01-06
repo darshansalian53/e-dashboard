@@ -1,10 +1,18 @@
 const express = require('express');
+const cors = require("cors");
 require('./db/config');
 const User = require("./db/User");
+const { request } = require('pandas/lib/flickr');
 const app = express();
 
-app.post("/register",(req,resp)=>{
-    resp.send("api in progress")
+
+app.use(express.json());
+app.use(cors());
+
+app.post("/register",async(req,resp)=>{
+    let user= new User(req.body);
+    let result= await user.save();
+    resp.send(result);
 })
 
 
