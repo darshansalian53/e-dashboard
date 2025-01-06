@@ -1,9 +1,9 @@
 
 import './App.css';
-import Nav from './Components/Nav'
+import Nav from './Components/Navbar/Nav'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Footer from './Components/Footer';
-import SignUp from './Components/SignUp';
+import Footer from './Components/Footer/Footer';
+import SignUp from './Components/SignUp/SignUp';
 
 function App() {
 

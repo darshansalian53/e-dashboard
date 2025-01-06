@@ -1,0 +1,75 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Navigation Container */
+  .nav-ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 15px 20px;
+  }
+  
+  .nav-ul li {
+    display: inline-block;
+    margin-left: 20px;
+  }
+  
+  .nav-ul li:first-child {
+    margin-left: 0;
+  }
+  
+  .nav-ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .nav-ul li a:hover {
+    background-color: #555;
+  }
+  
+  /* Mobile Toggle Button */
+  .toggle-menu {
+    display: none;
+    font-size: 28px;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .toggle-menu:focus {
+    outline: none;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .nav-ul {
+      flex-direction: column;
+      display: none;
+      background-color: #333;
+    }
+  
+    .nav-ul.active {
+      display: flex;
+    }
+  
+    .nav-ul li {
+      margin: 10px 0;
+    }
+  
+    .toggle-menu {
+      display: block;
+    }
+  }
+  
