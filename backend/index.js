@@ -1,9 +1,11 @@
-const express= require('express');
+const express = require('express');
+require('./db/config');
+const User = require("./db/User");
+const app = express();
 
-const app= express();
+app.post("/register",(req,resp)=>{
+    resp.send("api in progress")
+})
 
-app.get("/",(req,resp)=>{
-    resp.send("app is working...")
-});
 
-app.listen(5000)
+app.listen(5000);
