@@ -51,6 +51,14 @@ form {
     background-color: #0056b3;
   }
 
+  .invalid-input{
+    margin-bottom: 15px;
+    color: red;
+    display: block;
+    text-align: left;
+    
+  }
+
   /* Responsive Design */
 @media (max-width: 768px) {
     .register {
