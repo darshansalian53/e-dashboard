@@ -1,29 +1,53 @@
-import React, { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './ProductList.css';
 
 const ProductList = () => {
-    const [products, setProducts] = useState([]);
-    useEffect(() => {
-        getProducts();
-    }, [])
+  const [products, setProducts] = useState([]);
 
-    const getProducts = async () => {
-        let result = await fetch('http://localhost:5000/products');
-        result = await result.json();
-        setProducts(result);
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  // Fetch all products
+  const getProducts = async () => {
+    try {
+      let result = await fetch('http://localhost:5000/products');
+      result = await result.json();
+      setProducts(result);
+    } catch (error) {
+      console.error("Error fetching products:", error);
     }
-    const deleteProduct = async (id)=>{
-        let result = await fetch(`http://localhost:5000/product/${id}`,{
-            method:"Delete"
-        });
-        result =await result.json()
-        if(result)
-        {
-            getProducts();
-        }
-    };
+  };
 
-    return (
+  // Delete a product by ID
+  const deleteProduct = async (id) => {
+    try {
+      let response = await fetch(`http://localhost:5000/product/${id}`, {
+        method: "DELETE",
+      });
+      let result;
+      try {
+        result = await response.json();
+      } catch (err) {
+        result = { message: "Non-JSON response from server" };
+      }
+
+
+      if (response.ok) {
+        alert("Product deleted successfully");
+        getProducts(); // Refresh the product list
+      } else {
+        alert(result.message || "Error deleting the product");
+      }
+    } catch (error) {
+      console.error("Error deleting the product:", error);
+      alert("An error occurred while deleting the product.");
+    }
+  };
+
+
+  return (
         <div className="product-list">
             <h3>ProductList</h3>
             <ul>
@@ -41,6 +65,7 @@ const ProductList = () => {
                         <li>$ {item.price}</li>
                         <li>{item.category}</li>
                         <li><button onClick={()=>deleteProduct(item._id)}>Delete</button></li>
+                        <Link to={"/update/"+item._id}>Update</Link>
                     </ul>
                 )
             }
@@ -48,4 +73,4 @@ const ProductList = () => {
     )
 }
 
-export default ProductList
+export default ProductList;

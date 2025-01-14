@@ -1,13 +1,13 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import './AddProduct.css';
 
 
 const AddProduct = () => {
-    const [name, setName] = React.useState('');
-    const [price, setPrice] = React.useState('');
-    const [category, setCategory] = React.useState('');
-    const [company, setCompany] = React.useState('');
-    const [error, setError]= React.useState(false)
+    const [name, setName] = useState('');
+    const [price, setPrice] = useState('');
+    const [category, setCategory] = useState('');
+    const [company, setCompany] = useState('');
+    const [error, setError]= useState(false)
 
 
     const addProduct= async ()=>{
