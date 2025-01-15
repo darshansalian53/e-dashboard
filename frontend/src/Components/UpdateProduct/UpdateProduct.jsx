@@ -19,9 +19,9 @@ const UpdateProduct = () => {
         console.warn(params)
         let result = await fetch(`http://localhost:5000/product/${params.id}`);
         result = await result.json();
-        setName(result.name)
-        setPrice(result.price)
-        setCategory(result.category)
+        setName(result.name);
+        setPrice(result.price);
+        setCategory(result.category);
         setCompany(result.company)
 
     }
